@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import './App.css';
+import { CardList } from './components/card-list/card-list'
 
 
 
@@ -9,36 +10,27 @@ class App extends Component {
     super()
 
     this.state = {
-      heroes : [
-        {
-          name: "Thor",
-          key:1
-        },
-        {
-          name: "Hulk",
-          key:1
-        },
-        {
-          name: "Black Panther",
-          key:1
-        },
-
-      ]
-    }  
+      monsters : []
+    }
   }
 
   componentDidMount(){
-    fetch('https://jsonplaceholder.typicode.com/users')
+    fetch("https://jsonplaceholder.typicode.com/users")
     .then(response => response.json())
-    .then(users => console.log(users))
+    .then(users => this.setState({ monsters : users}))
   }
-
+ 
   render(){
     return (
       <div className="App">
-      {this.state.heroes.map(heroes => <h1 key={heroes.key}>{heroes.name}</h1>)}
-    </div>
+         <CardList>
+         {this.state.monsters.map(monsters => <h1 key={monsters.id}>{monsters.name}</h1>)}
+         </CardList>
+        
+      </div>
+     
     );
+    
   }
 }
 
