@@ -1,14 +1,14 @@
 import React from 'react'
 import '../../index.css'
 
-import { Card } from '../card/card'
 
-export const CardList = props => (
-    
-<div className="card-list">
-{props.monsters.map(monsters => (
-<Card key={monsters.id} monsters = {monsters}/>
 
-))}
-</div>
-)
+export const CardList = (props) => {
+    return(
+  <div className="card-list">
+            {props.monsters.map( (monsters) =>
+                 <h1 key={monsters.id}>{monsters.name}</h1> 
+             )}
+          
+    </div>  
+)}
